@@ -3,64 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
-use App\Http\Requests\StoreItemRequest;
-use App\Http\Requests\UpdateItemRequest;
+use App\Models\ItemCondition;
+use App\Models\ItemType;
+use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+    public function item_add_view() {
+        $item_types = ItemType::all();
+        $item_conditions = ItemCondition::all();
+
+        return view("item_add", [
+            "title" => "Add Item",
+            "types" => $item_types,
+            "conditions" => $item_conditions,
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    public function item_add(Request $request) {
+        $validated = $request->validate([
+            "type" => "required",
+            "condition" => "required",
+            "description" => "required",
+            "defects" => "required",
+            "amount" => "required|integer",
+            "image" => "required|mimes:jpg,jpeg,png"
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreItemRequest $request)
-    {
-        //
-    }
+        if ($request->file('image')) {
+            $validated['image'] = '/storage/' . $request->file('image')->store('items_img');
+        }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Item $item)
-    {
-        //
-    }
+        Item::create($validated);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Item $item)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateItemRequest $request, Item $item)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Item $item)
-    {
-        //
+        return redirect('/inventory')->with('addItemSuccess', "Successfully added new item");
     }
 }

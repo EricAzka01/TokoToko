@@ -5,16 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Item extends Model
+class ItemType extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'type',
-        'condition',
-        'description',
-        'defects',
-        'amount',
-        'image',
+        'name',
     ];
 }
