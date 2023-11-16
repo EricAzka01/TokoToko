@@ -18,15 +18,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class,'index'])->middleware('guest');
+Route::middleware(['guest'])->group(function () {
+    # Home
+    Route::get('/', [HomeController::class,'index']);
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class,'store'])->middleware('guest');
+    # Register
+    Route::get('/register', [RegisterController::class, 'index']);
+    Route::post('/register_seller', [RegisterController::class,'register_seller']);
+    Route::post('/register_buyer', [RegisterController::class,'register_buyer']);
 
-Route::get('/login', [LoginController::class,'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class,'auth'])->middleware('guest');
-Route::get('/logout', [LoginController::class,'logout'])->middleware('auth');
+    # Login
+    Route::get('/login', [LoginController::class,'index'])->name('login');
+    Route::post('/login', [LoginController::class,'auth']);
+});
 
-Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory')->middleware('auth');
-Route::get('/item_add', [ItemController::class, 'item_add_view'])->middleware('auth');
-Route::post('/item_add', [ItemController::class, 'item_add'])->middleware('auth');
+Route::middleware(['auth'])->group(function () {
+    # Login
+    Route::get('/logout', [LoginController::class,'logout']);
+
+    # Dashboard
+    Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
+    Route::get('/item_add', [ItemController::class, 'item_add_view']);
+    Route::post('/item_add', [ItemController::class, 'item_add']);
+});
