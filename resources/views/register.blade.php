@@ -56,8 +56,8 @@
                 <input class="p-1 border mb-5 ml-10" type="text" name="username" id="username">
                 <br>
 
-                <label for="toko">Shop Name</label>
-                <input class="p-1 border mb-5" type="text" name="toko" id="toko">
+                <label for="shopname">Shop Name</label>
+                <input class="p-1 border mb-5" type="text" name="shopname" id="shopname">
                 <br>
 
                 <label for="email">Email</label>
