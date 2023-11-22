@@ -3,10 +3,13 @@
 @section('container')
 
 <!-- Home Page -->
-
-<div class="border-0 shadow-xl rounded bg-green-300 mx-auto py-12 px-4 mt-10 text-center">
-    <h1 class="text-6xl font-bold text-black mb-4">Welcome to our E-commerce Store</h1>
-    <p class="text-2xl text-black mb-8">Explore our amazing collection of products</p>
+<div>
+<div class=" mx-auto py-24 px-4 mt-10 text-center flex">
+    <div class="w-96 h-96 ml-5">
+        <img src="{{ asset('images/shop.png') }}" alt="shop">
+    </div>
+    <h1 class="text-9xl font-bold text-black mb-4 ml-20 mt-12">TokoToko</h1>
+</div>
 </div>
 
 <div class="container mx-auto py-12 px-4">

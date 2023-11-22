@@ -10,7 +10,6 @@
   @include('partials.navbar')
 
   <div class="mx-8 my-8">
-    <h1 class="text-3xl font-bold text-center">{{ $title }}</h1>
     @yield('container')
   </div>
 </body>
