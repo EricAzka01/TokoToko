@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SellerInventoryController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\SellerOrderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -39,3 +40,5 @@ Route::middleware(['seller'])->group(function() {
     
     Route::post('/logout/seller', [LoginController::class, 'logout_seller']);
 });
+
+Route::get('/item', [ItemController::class, 'index']);
