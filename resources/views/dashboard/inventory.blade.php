@@ -30,19 +30,19 @@
                     <td class="border">{{ $item->i_price }}</td>
                     <td class="border">{{ $item->i_stock }}</td>
                     <td class="border">
-                        <img class="object-scale-down h-32 w-32" src="{{ $item->i_image }}">
+                        <img class="object-scale-down h-32 w-32 mx-auto" src="{{ $item->i_image }}">
                     </td>
 
                     <td class="border">
-                            <div class="bg-red-400 w-8 h-8 flex items-center justify-center rounded-md">
+                            <div class="bg-red-400 w-8 h-8 flex items-center justify-center rounded-md mx-auto">
                                 <i data-feather="eye" class="stroke-black"></i>
                             </div>
 
-                            <div class="bg-yellow-400 w-8 h-8 flex items-center justify-center rounded-md">
+                            <div class="bg-yellow-400 w-8 h-8 flex items-center justify-center rounded-md mx-auto mt-1">
                                 <i data-feather="edit" class="stroke-black"></i>
                             </div>
 
-                            <div class="bg-green-400 w-8 h-8 flex items-center justify-center rounded-md">
+                            <div class="bg-green-400 w-8 h-8 flex items-center justify-center rounded-md mx-auto mt-1">
                                 <i data-feather="trash-2" class="stroke-black"></i>
                             </div>
                     </td>
