@@ -23,10 +23,10 @@ class BuyerFactory extends Factory
         $emailAddress = strtolower($fullName) . '@gmail.com';
 
         return [
-            "s_name" => $fullName,
-            "s_email" => $emailAddress,
-            "s_phoneno" => fake()->phoneNumber(),
-            "s_address" => fake()->address(),
+            "b_name" => $fullName,
+            "b_email" => $emailAddress,
+            "b_phoneno" => fake()->phoneNumber(),
+            "b_address" => fake()->address(),
             "password" => password_hash('123123', PASSWORD_DEFAULT),
         ];
     }

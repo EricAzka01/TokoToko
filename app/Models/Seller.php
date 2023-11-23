@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Item;
 
 class Seller extends Authenticatable
 {
@@ -24,4 +25,9 @@ class Seller extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 }

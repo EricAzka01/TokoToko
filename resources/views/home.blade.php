@@ -10,17 +10,17 @@
     <div class="mb-8"></div>
 
     <div class="grid grid-cols-6 gap-6 justify-items-center">
-        @for ($i = 0; $i < 18; $i++)
+        @foreach ($items as $item)
             <div class="w-auto mt-4 bg-white shadow-lg rounded-lg">
                 <a href="#">
-                    <img src="https://placehold.co/300x300" alt="Item" class="object-cover rounded-t-lg">
+                    <img src="{{ $item->i_image }}" alt="item" class="object-cover rounded-t-lg">
                     <div class="mt-2 ml-3 mb-4">
-                        <div class="text-sm">Item name</div>
-                        <div class="font-bold">Rp{{ random_int(1000, 10000) }}</div>
-                        <div class="text-xs mt-2">Shopname</div>
+                        <div class="text-sm">{{ $item->i_name }}</div>
+                        <div class="font-bold">Rp{{ $item->i_price }}</div>
+                        <div class="text-xs mt-2">{{ $item->seller->s_name }}</div>
                     </div>
                 </a>
             </div>
-        @endfor
+        @endforeach
     </div>
 @endsection
