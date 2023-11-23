@@ -3,18 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Seller extends Model
+class Seller extends Authenticatable
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'shopname',
-        'email',
-        'phoneno',
-        'address',
+        's_name',
+        's_email',
+        's_phoneno',
+        's_address',
         'password',
     ];
 
@@ -25,5 +24,4 @@ class Seller extends Model
     protected $casts = [
         'password' => 'hashed',
     ];
-
 }

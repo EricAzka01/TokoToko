@@ -1,43 +1,34 @@
 <?php
 
+use App\Http\Controllers\DashboardInventoryController;
+use App\Http\Controllers\DashboardOrderController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\ItemController;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SignupController;
+use App\Http\Controllers\DashboardHomeController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('/', [HomeController::class, 'index'])->name('buyer.home')->middleware('redirectIfSeller');
 
-Route::middleware(['guest'])->group(function () {
-    # Home
-    Route::get('/', [HomeController::class,'index']);
+Route::middleware(['guest'])->group(function() {
+    Route::get('/login', [LoginController::class, 'index']);
+    Route::get('/signup', [SignupController::class, 'index']);
 
-    # Register
-    Route::get('/register', [RegisterController::class, 'index']);
-    Route::post('/register_seller', [RegisterController::class,'register_seller']);
-    Route::post('/register_buyer', [RegisterController::class,'register_buyer']);
+    Route::post('/signup/buyer', [SignupController::class, 'signup_buyer']);
+    Route::post('/signup/seller', [SignupController::class, 'signup_seller']);
 
-    # Login
-    Route::get('/login', [LoginController::class,'index'])->name('login');
-    Route::post('/login', [LoginController::class,'auth']);
+    Route::post('/login/buyer', [LoginController::class, 'login_buyer']);
+    Route::post('/login/seller', [LoginController::class, 'login_seller']);
 });
 
-Route::middleware(['auth'])->group(function () {
-    # Login
-    Route::get('/logout', [LoginController::class,'logout']);
+Route::middleware(['buyer'])->group(function() {
+    Route::post('/logout/buyer', [LoginController::class, 'logout_buyer']);
+});
 
-    # Dashboard
-    Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
-    Route::get('/item_add', [ItemController::class, 'item_add_view']);
-    Route::post('/item_add', [ItemController::class, 'item_add']);
+Route::middleware(['seller'])->group(function() {
+    Route::get('/dashboard', [DashboardHomeController::class, 'index'])->name('seller.home');
+    Route::get('/inventory', [DashboardInventoryController::class, 'index']);
+    Route::get('/order', [DashboardOrderController::class, 'index']);
+    
+    Route::post('/logout/seller', [LoginController::class, 'logout_seller']);
 });
