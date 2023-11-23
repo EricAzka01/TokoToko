@@ -25,8 +25,8 @@
 
         <form action="/logout/seller" method="POST" class="flex items-center">
             @csrf
-            <i data-feather="log-out" class="ml-4 stroke-white"></i>
-            <button class="bg-green-500 w-full ml-4 py-4 text-white font-medium text-lg text-left">
+            <i data-feather="log-out" class="ml-4 stroke-white w-8 h-8"></i>
+            <button class="bg-green-500 w-full ml-4 my-4 text-white font-medium text-lg text-left">
                 Logout
             </button>
         </form>

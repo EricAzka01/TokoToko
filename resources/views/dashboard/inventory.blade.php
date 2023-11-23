@@ -13,12 +13,42 @@
 
     <a href="/inventory/add" class="bg-green-500 px-4 py-2 text-white font-medium rounded-lg">Add Item</a>
 
+    <div class="mt-10"></div>
+
     @if (count($items) > 0)
-        @foreach ($items as $item)
-            <ul>
-                <li>{{ $item['i_name'] }}</li>
-            </ul>
-        @endforeach
+        <table class="w-full text-sm text-center border">
+            <tr class="border">
+                <th class="border">Name</th>
+                <th class="border">Price</th>
+                <th class="border">Stock</th>
+                <th class="border">Image</th>
+                <th class="border">Action</th>
+            </tr>
+            @foreach ($items as $item)
+                <tr>
+                    <td class="border">{{ $item->i_name }}</td>
+                    <td class="border">{{ $item->i_price }}</td>
+                    <td class="border">{{ $item->i_stock }}</td>
+                    <td class="border">
+                        <img class="object-scale-down h-32 w-32" src="{{ $item->i_image }}">
+                    </td>
+
+                    <td class="border">
+                            <div class="bg-red-400 w-8 h-8 flex items-center justify-center rounded-md">
+                                <i data-feather="eye" class="stroke-black"></i>
+                            </div>
+
+                            <div class="bg-yellow-400 w-8 h-8 flex items-center justify-center rounded-md">
+                                <i data-feather="edit" class="stroke-black"></i>
+                            </div>
+
+                            <div class="bg-green-400 w-8 h-8 flex items-center justify-center rounded-md">
+                                <i data-feather="trash-2" class="stroke-black"></i>
+                            </div>
+                    </td>
+                </tr>
+            @endforeach
+        </table>
     @else
         <div class="mt-12">No items yet</div>
     @endif
