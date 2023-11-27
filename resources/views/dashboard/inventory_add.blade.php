@@ -1,14 +1,14 @@
 @extends('dashboard.layout')
 
 @section('container')
-    <a href="/inventory" class="px-4 py-2 bg-green-500 text-white rounded-lg">Back to inventory</a>
+    <a href="/dashboard/inventory" class="px-4 py-2 bg-green-500 text-white rounded-lg">Back to inventory</a>
     <div class="mt-6"></div>
 
     <div class="font-bold text-3xl">Add New Item to Inventory</div>
 
     <div class="mt-12"></div>
 
-    <form action="/inventory/add" method="POST" enctype="multipart/form-data">
+    <form action="/item/add" method="POST" enctype="multipart/form-data">
         @csrf
 
         <label class="mt-2">Item name</label><br>
