@@ -7,10 +7,14 @@ use Illuminate\Http\Request;
 class ItemController extends Controller
 {
     public function index(Item $item){
+        $itemsAll = Item::inRandomOrder()->take(6)->get();
+        $itemsBySeller = Item::where('seller_id', $item->seller_id)->take(6)->get();
 
         return view('item', [
-            "item" => $item,
-            "title" => "Item",
+            'item' => $item,
+            'itemsBySeller' => $itemsBySeller,
+            'itemsAll' => $itemsAll,
+            'title' => 'Item',
         ]);
     }
 

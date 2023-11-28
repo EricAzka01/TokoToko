@@ -16,7 +16,7 @@
                     <img src="{{ $item->i_image }}" alt="item" class="object-cover rounded-t-lg">
                     <div class="mt-2 ml-3 mb-4">
                         <div class="text-sm">{{ $item->i_name }}</div>
-                        <div class="font-bold">Rp{{ $item->i_price }}</div>
+                        <div class="font-bold">Rp @convert($item->i_price)</div>
                         <div class="text-xs mt-2">{{ $item->seller->s_name }}</div>
                     </div>
                 </a>

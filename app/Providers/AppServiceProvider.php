@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Format IDR currency
+        Blade::directive('convert', function ($money) {
+            return "<?php echo number_format($money); ?>";
+        });
     }
 }
