@@ -37,4 +37,4 @@ Route::middleware(['seller'])->group(function() {
     Route::post('/logout/seller', [LoginController::class, 'logout_seller']);
 });
 
-Route::get('/item', [ItemController::class, 'index']);
+Route::get('/item/{item:id}', [ItemController::class, 'index']);
