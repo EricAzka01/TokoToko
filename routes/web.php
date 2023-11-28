@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -38,3 +39,5 @@ Route::middleware(['seller'])->group(function() {
 });
 
 Route::get('/item/{item:id}', [ItemController::class, 'index']);
+
+Route::get('/cart', [CartController::class, 'index']);
