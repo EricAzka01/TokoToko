@@ -6,7 +6,6 @@ use App\Models\Item;
 class HomeController extends Controller
 {
     public function index() {
-        setlocale(LC_MONETARY,"id_ID");
         $items = Item::inRandomOrder()->get();
         $title = 'Home';
 
