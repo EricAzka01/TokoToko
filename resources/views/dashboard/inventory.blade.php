@@ -34,16 +34,16 @@
                     </td>
 
                     <td class="border">
-                            <div class="bg-red-400 w-8 h-8 flex items-center justify-center rounded-md mx-auto">
-                                <i data-feather="eye" class="stroke-black"></i>
+                            <div class="bg-green-500 w-8 h-8 flex items-center justify-center rounded-md mx-auto">
+                                <i data-feather="eye" class="stroke-white"></i>
                             </div>
 
-                            <div class="bg-yellow-400 w-8 h-8 flex items-center justify-center rounded-md mx-auto mt-1">
-                                <i data-feather="edit" class="stroke-black"></i>
+                            <div class="bg-yellow-500 w-8 h-8 flex items-center justify-center rounded-md mx-auto mt-1">
+                                <i data-feather="edit" class="stroke-white"></i>
                             </div>
 
-                            <div class="bg-green-400 w-8 h-8 flex items-center justify-center rounded-md mx-auto mt-1">
-                                <i data-feather="trash-2" class="stroke-black"></i>
+                            <div class="bg-red-500 w-8 h-8 flex items-center justify-center rounded-md mx-auto mt-1">
+                                <i data-feather="trash-2" class="stroke-white"></i>
                             </div>
                     </td>
                 </tr>
