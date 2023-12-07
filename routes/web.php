@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ProfileBuyerController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -24,7 +25,10 @@ Route::middleware(['guest'])->group(function() {
 
 Route::middleware(['buyer'])->group(function() {
     Route::post('/logout/buyer', [LoginController::class, 'logout_buyer']);
+    Route::get('/profile', [ProfileBuyerController::class, 'index']);
+    Route::get('/cart', [CartController::class, 'index']);
 });
+
 
 Route::middleware(['seller'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'view_home'])->name('seller.home');
@@ -40,4 +44,3 @@ Route::middleware(['seller'])->group(function() {
 
 Route::get('/item/{item:id}', [ItemController::class, 'index']);
 
-Route::get('/cart', [CartController::class, 'index']);
