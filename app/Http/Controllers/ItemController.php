@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Auth;
 
 class ItemController extends Controller
 {
     public function index(Item $item){
         $itemsAll = Item::inRandomOrder()->take(6)->get();
         $itemsBySeller = Item::where('seller_id', $item->seller_id)->take(6)->get();
+        $buyer = Auth::user();
 
         return view('item', [
             'item' => $item,
+            'buyer' => $buyer,
             'itemsBySeller' => $itemsBySeller,
             'itemsAll' => $itemsAll,
             'title' => 'Item',

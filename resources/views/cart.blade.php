@@ -3,7 +3,7 @@
 @section('container')
 
 
-
+@if (count($cartItems) == 0)
 <div class="place-items-center">
     <div class="justify-center flex mt-24">
         <img class="overflow-hidden w-48 h-48" src="https://static.vecteezy.com/system/resources/previews/021/495/594/original/3d-shopping-cart-with-a-basket-icon-illustration-png.png" alt="cart"/>
@@ -17,6 +17,9 @@
         <a href="/" class="button bg-green-400 rounded-xl px-3 py-2 text-white">Let's Shop!</a>
     </div>
 </div>
+@else
+
+@endif
 
 
 <div class="mt-24">

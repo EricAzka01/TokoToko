@@ -37,7 +37,8 @@
             <div class="mt-20 flex justify-center">
                 <form action="/cart/add" method="POST">
                     @csrf
-                    <input type="hidden" value="{{ $item->id }}">
+                    <input type="hidden" name="item_id" value="{{ $item->id }}">
+                    <input type="hidden" name="buyer_id" value="{{ $buyer->id }}">
 
                     <button type="submit"
                         class="px-2 py-1 border border-2 border-green-500 text-green-500 font-medium rounded-lg">
