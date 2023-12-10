@@ -43,7 +43,6 @@ class CartController extends Controller
 
     public function checkout(Request $request)
     {
-        dd($request);
         $item = Item::where('id', $request->item_id)->first();
 
         return redirect('/payment')->with([
