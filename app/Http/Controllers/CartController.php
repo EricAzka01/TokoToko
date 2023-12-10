@@ -18,7 +18,7 @@ class CartController extends Controller
         return view('cart', [
             'itemsAll' => $itemsAll, 
             'cartItems' => $cartItems,
-            "title" => "Cart",
+            "title" => 'Cart',
         ]);
     }
 

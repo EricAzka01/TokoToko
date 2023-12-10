@@ -13,7 +13,7 @@ class ProfileBuyerController extends Controller
         $user = Auth::user();
 
         return view('profilebuyer', [ 
-            "title" => "Profile",
+            "title" => $user->b_name . "'s Profile",
             'user' => $user,
         ]); 
     }

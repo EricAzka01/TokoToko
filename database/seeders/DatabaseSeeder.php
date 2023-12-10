@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Buyer::factory()->create([
-            'b_name' => 'Muhammad Ghifari Taqiuddin',
+            'b_name' => 'Ghifari',
             'b_email' => 'mghifarit53@gmail.com',
             'b_phoneno' => '0813-5931-6402',
             'b_address' => 'Jl. Teknik Komputer No. 78, Perumdos ITS Blok U',

@@ -10,9 +10,9 @@
         <div class="ml-4 px-5 my-5 w-2/3">
             <span class="font-bold text-xl">
                 {{ $item->i_name }}
-            </span>
+            </span><br>
 
-            <h1 class="text-gray-500">by {{ $item->seller->s_name }}</h1>
+            <a href="#" class="text-gray-500">by {{ $item->seller->s_name }}</a>
 
             <h2 class="text-3xl font-semibold text-2xl mt-5">Rp. @convert($item->i_price)</h2>
             <h2 class="mt-12">{{ $item->i_description }}</h2>
@@ -24,7 +24,7 @@
                 Stock
             </div>
 
-            <div class="flex cursor-pointer place-content-center mt-5 gap-5">
+            <div class="flex justify-center mt-2 gap-5">
                 {{ $item->i_stock }} Available
             </div>
 

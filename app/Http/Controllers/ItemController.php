@@ -7,7 +7,8 @@ use Auth;
 
 class ItemController extends Controller
 {
-    public function index(Item $item){
+    public function index(Item $item)
+    {
         $itemsAll = Item::inRandomOrder()->take(6)->get();
         $itemsBySeller = Item::where('seller_id', $item->seller_id)->take(6)->get();
         $buyer = Auth::user();
@@ -17,21 +18,23 @@ class ItemController extends Controller
             'buyer' => $buyer,
             'itemsBySeller' => $itemsBySeller,
             'itemsAll' => $itemsAll,
-            'title' => 'Item',
+            'title' => $item->i_name,
         ]);
     }
 
-    function generate_filename($inputString) {
+    function generate_filename($inputString)
+    {
         // Convert to lowercase
         $lowercaseString = strtolower($inputString);
-    
+
         // Replace spaces with hyphens
         $processedString = str_replace(' ', '-', $lowercaseString);
-    
+
         return $processedString;
     }
 
-    function generate_slug($i_name) {
+    function generate_slug($i_name)
+    {
         $cleaned_name = preg_replace('/[^a-zA-Z0-9]+/', '-', $i_name);
         $lowercase_name = strtolower($cleaned_name);
         $slug = str_replace(' ', '-', $lowercase_name);
@@ -39,9 +42,10 @@ class ItemController extends Controller
         $hashed_suffix = substr($hashed_name, 0, 10);
         $final_slug = $slug . '-' . $hashed_suffix;
         return $final_slug;
-    }    
+    }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $validated = $request->validate([
             'i_name' => 'required|min:5|max:100',
             'i_price' => 'required|integer',
@@ -53,15 +57,15 @@ class ItemController extends Controller
 
         $validated['i_slug'] = $this->generate_slug($validated['i_name']);
 
-        // TODO: Fix filename extension (get original file extension first)
         if ($request->file('i_image')) {
-            $filename = $this->generate_filename($validated['i_name'] . '.jpg');
-            $request->file('i_image')->storeAs('public/item_images', $filename);
+            $file = $request->file('i_image');
+            $filename = uniqid() . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/item_images/' . $filename);
             $validated['i_image'] = '/storage/item_images/' . $filename;
         }
 
         Item::create($validated);
 
-        return redirect('/dashboard/inventory')->with('addItemSuccess', "Successfully added new item");
+        return redirect('/dashboard/inventory')->with('addItemSuccess', 'Successfully added new item');
     }
 }

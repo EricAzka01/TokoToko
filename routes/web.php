@@ -11,9 +11,13 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index'])->name('buyer.home')->middleware('redirectIfSeller');
-
+Route::middleware('redirectIfSeller')->group(function() {
+    // Should be accessible by guest and buyer but not seller
+    Route::get('/item/{item:i_slug}', [ItemController::class, 'index']);
+    Route::get('/', [HomeController::class, 'index'])->name('buyer.home');
+});
 Route::middleware(['guest'])->group(function() {
+    // Routes for guest
     Route::get('/login', [LoginController::class, 'index']);
     Route::get('/signup', [SignupController::class, 'index']);
 
@@ -25,6 +29,7 @@ Route::middleware(['guest'])->group(function() {
 });
 
 Route::middleware(['buyer'])->group(function() {
+    // Buyer only
     Route::post('/logout/buyer', [LoginController::class, 'logout_buyer']);
     Route::get('/profile', [ProfileBuyerController::class, 'index']);
     Route::get('/cart', [CartController::class, 'index']);
@@ -34,6 +39,7 @@ Route::middleware(['buyer'])->group(function() {
 
 
 Route::middleware(['seller'])->group(function() {
+    // Seller only
     Route::get('/dashboard', [DashboardController::class, 'view_home'])->name('seller.home');
     Route::get('/dashboard/order', [DashboardController::class, 'view_order']);
     Route::get('/dashboard/chat', [DashboardController::class, 'view_chat']);
@@ -44,6 +50,3 @@ Route::middleware(['seller'])->group(function() {
     
     Route::post('/logout/seller', [LoginController::class, 'logout_seller']);
 });
-
-Route::get('/item/{item:i_slug}', [ItemController::class, 'index']);
-

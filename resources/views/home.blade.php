@@ -3,7 +3,7 @@
 @section('container')
     <div class="mt-8 bg-white h-80 rounded-lg shadow-xl">
         <a href="#">
-            <img src="https://cdn.discordapp.com/attachments/1150649876166737921/1179068314706776114/Frame_1.png?ex=65786ff0&is=6565faf0&hm=3282e5265b11b9b1d240a92ea69c98a71a5919816fe6277d413121f2dd250079&" alt="Item" class="object-cover h-80 w-full rounded-lg">
+            <img src="https://cdn.discordapp.com/attachments/1150649876166737921/1183497118854414356/Frame_1.jpg?ex=65888c95&is=65761795&hm=ff404b8bf6b5f628488fa8a9b0e51e244f523f89f3870c5dc9d646c5041eb20d&" alt="liburan-jepang" class="object-cover h-80 w-full rounded-lg">
         </a>
     </div>
 
