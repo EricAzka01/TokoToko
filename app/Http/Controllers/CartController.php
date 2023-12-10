@@ -19,6 +19,7 @@ class CartController extends Controller
             ->carts()
             ->with('item')
             ->get()
+            ->reverse()
             ->pluck('item');
 
         return view('cart', [
@@ -56,6 +57,7 @@ class CartController extends Controller
         $itemId = $request->item_id;
         Cart::where('buyer_id', $buyerId)
             ->where('item_id', $itemId)
+            ->first()
             ->delete();
 
         return redirect('/cart');
