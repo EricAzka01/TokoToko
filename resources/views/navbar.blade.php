@@ -1,4 +1,4 @@
-<nav class="bg-white mx-8 my-6 h-16 top-6 p-4 rounded-lg shadow-lg sticky z-50">
+<nav class="bg-white mx-8 my-6 h-16 top-6 p-4 rounded-lg shadow-lg {{ $title == 'Payment' ? "" : 'sticky' }} z-50">
     <div class="flex justify-between select-none">
         <div class="ml-2 flex">
             <a href="/" class="font-bold text-2xl text-green-500">TokoToko</a>

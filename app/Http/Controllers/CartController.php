@@ -15,4 +15,8 @@ class CartController extends Controller
             "title" => "Cart",
         ]);
     }
+
+    public function store(Request $request) {
+        dd($request);
+    }
 }

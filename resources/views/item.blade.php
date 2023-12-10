@@ -1,7 +1,6 @@
 @extends('layout')
 
 @section('container')
-
     {{-- Item Description --}}
     <div class="flex ml-10 mt-24">
 
@@ -36,9 +35,15 @@
             </div>
 
             <div class="mt-20 flex justify-center">
-                <a href="/cart" class="px-2 py-1 border border-2 border-green-500 text-green-500 font-medium rounded-lg">
-                    Add to Cart
-                </a>
+                <form action="/cart/add" method="POST">
+                    @csrf
+                    <input type="hidden" value="{{ $item->id }}">
+
+                    <button type="submit"
+                        class="px-2 py-1 border border-2 border-green-500 text-green-500 font-medium rounded-lg">
+                        Add to Cart
+                    </button>
+                </form>
             </div>
 
         </div>
