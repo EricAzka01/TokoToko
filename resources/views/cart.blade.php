@@ -20,11 +20,27 @@
     @else
             @foreach ($cartItems as $item)
                     <div class="bg-white py-6 px-2 rounded-xl shadow-lg flex mb-8">
-                        <img src="{{ $item->i_image }}" alt="{{ $item->i_name }}" class="w-32 h-32">
+                        <img src="{{ $item->i_image }}" alt="{{ $item->i_name }}" class="w-32 h-32 justify-start">
                         <div class="ml-8">
                             <span class="">{{ $item->i_name }}</span><br>
                             <span class="text-xl font-medium">Rp @convert($item->i_price)</span><br>
                             <span class="text-sm text-gray-500 mt-6">{{ $item->seller->s_name }}</span>
+                        </div>
+
+                        <div class="flex content-end">
+                            <form action="/cart/checkout" method="POST">
+                                @csrf
+                                <input type="hidden" name="item_id" value="{{ $item->id }}">
+
+                                <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded-lg">Checkout</button>
+                            </form>
+
+                            <form action="/cart/delete" method="POST">
+                                @csrf
+                                <input type="hidden" name="item_id" value="{{ $item->id }}">
+
+                                <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded-lg">Delete</button>
+                            </form>
                         </div>
                     </div>
             @endforeach

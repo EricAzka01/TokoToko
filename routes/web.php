@@ -34,7 +34,10 @@ Route::middleware(['buyer'])->group(function() {
     Route::get('/profile', [ProfileBuyerController::class, 'index']);
     Route::get('/cart', [CartController::class, 'index']);
     Route::get('/payment', [PaymentController::class, 'index']);
+
     Route::post('/cart/add', [CartController::class, 'store']);
+    Route::post('/cart/checkout', [CartController::class, 'checkout']);
+    Route::post('/cart/delete', [CartController::class, 'delete']);
 });
 
 

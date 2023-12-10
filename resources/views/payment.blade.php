@@ -1,25 +1,20 @@
 @extends('layout')
 
 @section('container')
-    <!-- Include the modal component -->
-    {{-- @include('modals.example-modal') --}}
-
-
     <div class="border shadow-xl rounded-xl mx-20">
-        <h1 class="text-5xl py-3 text-center text-green-500 mt-10 text-2xl font-bold">Payment</h1>
+        <h1 class="text-4xl py-3 text-center text-green-500 mt-10 font-bold">Payment</h1>
         <div class="shadow-xl p-10 rounded-xl flex justify-center items-center gap-20">
-            <img class="object-scale-down h-48 w-48"
-                src="https://static.vecteezy.com/system/resources/previews/021/495/594/original/3d-shopping-cart-with-a-basket-icon-illustration-png.png">
+            <img class="object-scale-down h-72 w-72"
+                src="{{ $item->i_image }}">
             <div>
                 <div class="border-y-5">
-                    <h1 class="font-semibold text-2xl">Item Name: </h1>
-                    <h2 class="font-semibold text-xl">Item Price: </h2>
-                    <h2 class="font-semibold text-xl">Item Quantity: </h2>
-                    <h2 class="font-semibold text-xl">Subtotal: </h2>
+                    <h1 class="text-xl">{{ $item->i_name }}</h1>
+                    <h2 class="font-semibold text-3xl">Rp @convert($item->i_price)</h2>
+                    <h2 class="text-gray-500 text-lg">1x</h2>
                 </div>
 
                 <div class="mt-20">
-                    <h1 class="font-bold text-3xl">Select Payment Method</h1>
+                    <h1 class="text-lg">Select Payment Method</h1>
                     <!-- Gopay Modal Trigger Button -->
                     <button id="openModal" class="border shadow-xl mr-5 rounded-xl px-3 py-3 mt-5">
                         Gopay
@@ -45,7 +40,8 @@
 
                             <!-- Modal Body -->
                             <div class="mt-4">
-                                <img src="https://cdn.discordapp.com/attachments/1150649876166737921/1183389733531951175/qr.png?ex=65882892&is=6575b392&hm=c48b91ed0da8a68ac3c98c4b93a8a06ba462ebf469ddd6a5f798b197e6e93536&" class="w-52 h-52" alt="SCAM">
+                                <img src="https://cdn.discordapp.com/attachments/1150649876166737921/1183389733531951175/qr.png?ex=65882892&is=6575b392&hm=c48b91ed0da8a68ac3c98c4b93a8a06ba462ebf469ddd6a5f798b197e6e93536&"
+                                    class="w-52 h-52" alt="SCAM">
                                 <h1 class="font">A/n Eric Azka Nugroho</h1>
                             </div>
                         </div>
@@ -65,7 +61,7 @@
                             modal.classList.add('hidden');
                         });
                     </script>
-                    
+
                 </div>
             </div>
         </div>
