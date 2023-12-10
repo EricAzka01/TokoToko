@@ -2,22 +2,19 @@
 
 @section('container')
     {{-- Item Description --}}
-    <div class="flex ml-10 mt-24">
-
-        <div>
-            <div class="bg-white shadow-lg rounded-xl w-96 h-96">
-                <img src="{{ $item->i_image }}" alt="product image">
-            </div>
+    <div class="flex mt-12">
+        <div class="flex-none bg-white shadow-lg rounded-xl w-96 h-96">
+            <img src="{{ $item->i_image }}" alt="{{ $item->i_name }}">
         </div>
 
-        <div class="ml-4 px-5 my-5">
-            <div class="font-bold text-2xl">
+        <div class="ml-4 px-5 my-5 w-2/3">
+            <span class="font-bold text-xl">
                 {{ $item->i_name }}
-            </div>
+            </span>
 
-            <h1 class="mt-2">{{ $item->i_stock }} Available</h1>
+            <h1 class="mt-2 text-gray-500">{{ $item->i_stock }} Available</h1>
 
-            <h2 class="font-semibold text-2xl mt-5">Rp.{{ $item->i_price }}</h2>
+            <h2 class="text-3xl font-semibold text-2xl mt-5">Rp. @convert($item->i_price)</h2>
             <h2 class="mt-10 font-semibold">Item Description</h2>
             <h2 class="">{{ $item->i_description }}</h2>
         </div>
@@ -35,16 +32,21 @@
             </div>
 
             <div class="mt-20 flex justify-center">
-                <form action="/cart/add" method="POST">
-                    @csrf
-                    <input type="hidden" name="item_id" value="{{ $item->id }}">
-                    <input type="hidden" name="buyer_id" value="{{ $buyer->id }}">
+                @auth('buyer')
+                    <form action="/cart/add" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_id" value="{{ $item->id }}">
+                        <input type="hidden" name="buyer_id" value="{{ $buyer->id }}">
 
-                    <button type="submit"
-                        class="px-2 py-1 border border-2 border-green-500 text-green-500 font-medium rounded-lg">
-                        Add to Cart
-                    </button>
-                </form>
+                        <button type="submit" class="px-4 py-2 bg-green-500 text-white font-medium rounded-lg">
+                            Add to Cart
+                        </button>
+                    </form>
+                @endauth
+
+                @guest
+                    <a href="/login" class="px-4 py-2 bg-green-500 text-white font-medium rounded-lg">Login to add to cart</a>
+                @endguest
             </div>
 
         </div>
