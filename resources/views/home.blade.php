@@ -12,7 +12,7 @@
     <div class="grid grid-cols-6 gap-6 justify-items-center">
         @foreach ($items as $item)
             <div class="w-auto mt-4 bg-white shadow-lg rounded-lg">
-                <a href="/item/{{ $item->id }}">
+                <a href="/item/{{ $item->i_slug }}">
                     <img src="{{ $item->i_image }}" alt="item" class="object-cover rounded-t-lg">
                     <div class="mt-2 ml-3 mb-4">
                         <div class="text-sm">{{ $item->i_name }}</div>

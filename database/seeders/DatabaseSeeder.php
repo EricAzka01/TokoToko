@@ -55,6 +55,7 @@ class DatabaseSeeder extends Seeder
                 6. After sales yg siap melayani anda selama 24 jam
                 ",
                 'i_stock' => 200,
+                'i_slug' => 'apple-iphone-15-128gb-blue-cc09e781ea',
                 'i_image' => 'https://images.tokopedia.net/img/cache/900/VqbcmM/2023/10/16/fe41d8fd-42b0-4ffb-8242-f878f9592e70.png',
                 'seller_id' => 2,
             ], [
@@ -68,6 +69,7 @@ class DatabaseSeeder extends Seeder
                 6. After sales yg siap melayani anda selama 24 jam
                 ",
                 'i_stock' => 200,
+                'i_slug' => 'apple-iphone-15-256gb-blue-5a635ae91d',
                 'i_image' => 'https://images.tokopedia.net/img/cache/900/VqbcmM/2023/10/16/fe41d8fd-42b0-4ffb-8242-f878f9592e70.png',
                 'seller_id' => 2,
             ], [
@@ -84,13 +86,24 @@ class DatabaseSeeder extends Seeder
                 • Android 13, One UI 3.1
                 Prosesor• Snapdragon 8 Gen 2 (4nm)• RAM 8 GB• ROM 256GB",
                 'i_stock' => 200,
+                'i_slug' => 'samsung-galaxy-s23-5g-8gb-256gb-cream-5b5a2d0e2d',
                 'i_image' => 'https://images.tokopedia.net/img/cache/900/VqbcmM/2023/6/8/1e3449bf-37cc-455b-b2f5-98bcae61987b.jpg',
                 'seller_id' => 2,
             ], [
                 'i_name' => 'Samsung Galaxy S23 5G 8/128GB - Green',
                 'i_price' => 11711500,
-                'i_description' => "Good",
+                'i_description' => '
+                Enjoy Offer Priode Promo 5 September - 6 Oktober
+                - Free Youtube Premium 4 Bulan senilai Rp 236K via SGI
+                
+                Warna Green
+                Jaringan
+                • Dual-SIM 5G
+                Sistem Operasi
+                • Android 13, One UI 3.1
+                Prosesor• Snapdragon 8 Gen 2 (4nm)• RAM 8 GB• ROM 128GB',
                 'i_stock' => 200,
+                'i_slug' => 'samsung-galaxy-s23-5g-8-128gb-green-b1f8f8371c',
                 'i_image' => 'https://images.tokopedia.net/img/cache/900/VqbcmM/2023/9/5/1340e628-b7fe-4551-9a6d-da0da6d5c264.jpg',
                 'seller_id' => 2,
             ], [
@@ -98,21 +111,15 @@ class DatabaseSeeder extends Seeder
                 'i_price' => 9750000,
                 'i_description' => 'Package Size (WxHxD)
 
-                1645 x 1020 x 162 mm
-                
-                
-                
+                1645 x 1020 x 162 mm      
                 Set Size with Stand (WxHxD)
                 
                 1450.7 x 907.1 x 284.1 mm
-                
-                
-                
                 Set Size without Stand (WxHxD)
-                
                 1450.7 x 840.8 x 74.1 mm
                 ',
                 'i_stock' => 200,
+                'i_slug' => 'samsung-smart-tv-65-uhd-4k-ua65au7002kxxd-451b647bae',
                 'i_image' => 'https://images.tokopedia.net/img/cache/900/VqbcmM/2023/10/12/08a0cca3-12e5-4dfd-88f6-5d743beb31f7.jpg',
                 'seller_id' => 2,
             ], 
@@ -133,6 +140,7 @@ Size
 Untuk menjaga agar dus sepatumu tetap aman, silahkan gunakan Additional Double Box dari Sneakersdept. Cuman 10rb!',
                 'i_stock' => 200,
                 'i_image' => 'https://images.tokopedia.net/img/cache/900/VqbcmM/2023/9/11/608b6282-1fa3-4195-894c-ed4c63a0cd2d.png',
+                'i_slug' => 'adidas-duramo-10-gw8349-original-46-7502ddc450',
                 'seller_id' => 1,
             ], [
                 'i_name' => 'Nike Court Royale AC AO2810111 ORIGINAL - 37.5',
@@ -147,6 +155,7 @@ Size
 Untuk menjaga agar dus sepatumu tetap aman, silahkan gunakan Additional Double Box dari Sneakersdept. Cuman 10rb!',
                 'i_stock' => 200,
                 'i_image' => 'https://images.tokopedia.net/img/cache/900/hDjmkQ/2023/11/23/6fa4450b-1569-4dc8-b072-0f1dfc2ae3b9.png',
+                'i_slug' => 'nike-court-royale-ac-ao2810111-original-375-06f95dca2a',
                 'seller_id' => 1,
             ]
         ];

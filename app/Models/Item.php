@@ -16,6 +16,7 @@ class Item extends Model
         'i_description',
         'i_stock',
         'i_image',
+        'i_slug',
         'seller_id',
     ];
 

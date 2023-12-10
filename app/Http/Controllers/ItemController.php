@@ -31,6 +31,16 @@ class ItemController extends Controller
         return $processedString;
     }
 
+    function generate_slug($i_name) {
+        $cleaned_name = preg_replace('/[^a-zA-Z0-9]+/', '-', $i_name);
+        $lowercase_name = strtolower($cleaned_name);
+        $slug = str_replace(' ', '-', $lowercase_name);
+        $hashed_name = hash('sha256', $i_name);
+        $hashed_suffix = substr($hashed_name, 0, 10);
+        $final_slug = $slug . '-' . $hashed_suffix;
+        return $final_slug;
+    }    
+
     public function store(Request $request) {
         $validated = $request->validate([
             'i_name' => 'required|min:5|max:100',
@@ -40,6 +50,8 @@ class ItemController extends Controller
             'i_image' => 'required|mimes:jpg,jpeg,png,webp',
             'seller_id' => 'required',
         ]);
+
+        $validated['i_slug'] = $this->generate_slug($validated['i_name']);
 
         // TODO: Fix filename extension (get original file extension first)
         if ($request->file('i_image')) {

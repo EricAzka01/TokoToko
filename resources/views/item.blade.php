@@ -3,8 +3,8 @@
 @section('container')
     {{-- Item Description --}}
     <div class="flex mt-12">
-        <div class="flex-none bg-white shadow-lg rounded-xl w-96 h-96">
-            <img src="{{ $item->i_image }}" alt="{{ $item->i_name }}">
+        <div class="flex-none bg-white shadow-lg rounded-2xl w-96 h-96">
+            <img class="rounded-2xl" src="{{ $item->i_image }}" alt="{{ $item->i_name }}">
         </div>
 
         <div class="ml-4 px-5 my-5 w-2/3">
@@ -12,23 +12,20 @@
                 {{ $item->i_name }}
             </span>
 
-            <h1 class="mt-2 text-gray-500">{{ $item->i_stock }} Available</h1>
+            <h1 class="text-gray-500">by {{ $item->seller->s_name }}</h1>
 
             <h2 class="text-3xl font-semibold text-2xl mt-5">Rp. @convert($item->i_price)</h2>
-            <h2 class="mt-10 font-semibold">Item Description</h2>
-            <h2 class="">{{ $item->i_description }}</h2>
+            <h2 class="mt-12">{{ $item->i_description }}</h2>
         </div>
 
 
-        <div class="ml-20 bg-white border shadow-xl rounded-xl my-10 mr-6 w-96">
+        <div class="ml-20 bg-white shadow-xl rounded-xl my-10 mr-6 w-96">
             <div class="font-bold text-center mt-10">
-                Quantity
+                Stock
             </div>
 
             <div class="flex cursor-pointer place-content-center mt-5 gap-5">
-                <div>-</div>
-                <div>0</div>
-                <div>+</div>
+                {{ $item->i_stock }} Available
             </div>
 
             <div class="mt-20 flex justify-center">
@@ -61,7 +58,7 @@
     <div class="grid grid-cols-6 gap-6 justify-items-center">
         @foreach ($itemsBySeller as $item)
             <div class="w-auto mt-4 bg-white shadow-lg rounded-lg">
-                <a href="/item/{{ $item->id }}">
+                <a href="/item/{{ $item->i_slug }}">
                     <img src="{{ $item->i_image }}" alt="item" class="object-cover rounded-t-lg">
                     <div class="mt-2 ml-3 mb-4">
                         <div class="text-sm">{{ $item->i_name }}</div>
@@ -80,7 +77,7 @@
     <div class="grid grid-cols-6 gap-6 justify-items-center">
         @foreach ($itemsAll as $item)
             <div class="w-auto mt-4 bg-white shadow-lg rounded-lg">
-                <a href="/item/{{ $item->id }}">
+                <a href="/item/{{ $item->i_slug }}">
                     <img src="{{ $item->i_image }}" alt="item" class="object-cover rounded-t-lg">
                     <div class="mt-2 ml-3 mb-4">
                         <div class="text-sm">{{ $item->i_name }}</div>
