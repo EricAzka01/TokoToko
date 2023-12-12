@@ -6,19 +6,13 @@ use Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Models\Item;
 
 class PaymentController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        $item = Item::where('id', $request->item_id)->first();
         $user = Auth::user();
-        $item = Session::get('item');
-
-        // If we're not being redirected from /cart,
-        // just redirect home
-        // Because we need the data passed in the session
-        if ($item == null) {
-            return redirect('/');
-        }
 
         return view('payment', [ 
             "title" => "Payment",

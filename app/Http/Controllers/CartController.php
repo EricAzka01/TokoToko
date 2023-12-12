@@ -42,15 +42,6 @@ class CartController extends Controller
         return redirect('/cart');
     }
 
-    public function checkout(Request $request)
-    {
-        $item = Item::where('id', $request->item_id)->first();
-
-        return redirect('/payment')->with([
-            'item' => $item,
-        ]);
-    }
-
     public function delete(Request $request)
     {
         $buyerId = Auth::user()->id;

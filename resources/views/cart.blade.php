@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="mr-auto space-x-4 flex">
-                    <form action="/cart/checkout" method="POST">
+                    <form action="/payment" method="POST">
                         @csrf
                         <input type="hidden" name="item_id" value="{{ $item->id }}">
                         <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded-lg">Checkout</button>
