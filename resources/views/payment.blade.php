@@ -43,7 +43,7 @@
                                 <img src="https://cdn.discordapp.com/attachments/1150649876166737921/1183389733531951175/qr.png?ex=65882892&is=6575b392&hm=c48b91ed0da8a68ac3c98c4b93a8a06ba462ebf469ddd6a5f798b197e6e93536&"
                                     class="w-52 h-52" alt="SCAM">
                                 <h1 class="font">A/n Eric Azka Nugroho</h1>
-                                <button class="border mr-5 px-3 py-3 mt-5 bg-green-300 text-white">Confirm</button>
+                                <button class="border mr-5 px-3 py-3 mt-5 bg-green-500 rounded-xl text-white">Confirm</button>
                             </div>
                         </div>
                     </div>

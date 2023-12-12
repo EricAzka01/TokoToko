@@ -7,6 +7,7 @@ use App\Models\Seller;
 use DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\Jobs\WelcomeEmailJob;
 
 class SignupController extends Controller
 {
@@ -33,6 +34,8 @@ class SignupController extends Controller
 
         Buyer::create($validated);
         
+        WelcomeEmailJob::dispatch($request->b_email, $request->b_name);
+
         return redirect('/login')->with('signupSuccess', 'Successfully signed up, you can now');
     }
 
