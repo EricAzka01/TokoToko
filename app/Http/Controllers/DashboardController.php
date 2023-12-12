@@ -23,21 +23,16 @@ class DashboardController extends Controller
             'url' => '/dashboard/order',
             'icon' => 'shopping-cart'
         ],
-        [
-            'name' => 'Chat',
-            'url' => '/dashboard/chat',
-            'icon' => 'message-circle'
-        ],
     ];
 
     public function view_home() {
         $title = 'Home';
-        $user = Auth::user();
+        $seller = Auth::guard('seller')->user();
 
         return view('dashboard.home', [
             'sidebarMenu' => $this->sidebarMenu,
             'title' => $title,
-            'user' => $user,
+            'seller' => $seller,
         ]);
     }
 

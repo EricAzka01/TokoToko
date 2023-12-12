@@ -3,7 +3,7 @@
 @section('container')
     {{-- Item Description --}}
     <div class="flex mt-12">
-        <div class="flex-none bg-white shadow-lg rounded-2xl w-96 h-96">
+        <div class="border flex-none bg-white shadow-lg rounded-2xl w-96 h-96">
             <img class="rounded-2xl" src="{{ $item->i_image }}" alt="{{ $item->i_name }}">
         </div>
 
@@ -19,7 +19,7 @@
         </div>
 
 
-        <div class="ml-20 bg-white shadow-xl rounded-xl my-10 mr-6 w-96">
+        <div class="border ml-20 bg-white shadow-xl rounded-xl my-10 mr-6 w-96">
             <div class="font-bold text-center mt-10">
                 Stock
             </div>
@@ -57,7 +57,7 @@
 
     <div class="grid grid-cols-6 gap-6 justify-items-center">
         @foreach ($itemsBySeller as $item)
-            <div class="w-auto mt-4 bg-white shadow-lg rounded-lg">
+            <div class="border  w-auto mt-4 bg-white shadow-lg rounded-lg">
                 <a href="/item/{{ $item->i_slug }}">
                     <img src="{{ $item->i_image }}" alt="item" class="object-cover rounded-t-lg">
                     <div class="mt-2 ml-3 mb-4">
@@ -76,7 +76,7 @@
 
     <div class="grid grid-cols-6 gap-6 justify-items-center">
         @foreach ($itemsAll as $item)
-            <div class="w-auto mt-4 bg-white shadow-lg rounded-lg">
+            <div class="border w-auto mt-4 bg-white shadow-lg rounded-lg">
                 <a href="/item/{{ $item->i_slug }}">
                     <img src="{{ $item->i_image }}" alt="item" class="object-cover rounded-t-lg">
                     <div class="mt-2 ml-3 mb-4">

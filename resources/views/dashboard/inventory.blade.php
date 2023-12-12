@@ -11,6 +11,12 @@
         </div>
     @endif
 
+    @if (session()->has('itemDeleteSuccess'))
+        <div class="text-red-500 font-medium text-lg mb-4">
+            {{ session('itemDeleteSuccess') }}
+        </div>
+    @endif
+
     <a href="/dashboard/inventory/add" class="bg-green-500 px-4 py-2 text-white font-medium rounded-lg">Add Item</a>
 
     <div class="mt-10"></div>
@@ -34,22 +40,29 @@
                     </td>
 
                     <td class="border">
-                            <div class="bg-green-500 w-8 h-8 flex items-center justify-center rounded-md mx-auto">
-                                <i data-feather="eye" class="stroke-white"></i>
-                            </div>
+                        <div class="bg-green-500 w-8 h-8 flex items-center justify-center rounded-md mx-auto">
+                            <i data-feather="eye" class="stroke-white"></i>
+                        </div>
 
-                            <div class="bg-yellow-500 w-8 h-8 flex items-center justify-center rounded-md mx-auto mt-1">
-                                <i data-feather="edit" class="stroke-white"></i>
-                            </div>
+                        <div class="bg-yellow-500 w-8 h-8 flex items-center justify-center rounded-md mx-auto mt-1">
+                            <i data-feather="edit" class="stroke-white"></i>
+                        </div>
 
-                            <div class="bg-red-500 w-8 h-8 flex items-center justify-center rounded-md mx-auto mt-1">
-                                <i data-feather="trash-2" class="stroke-white"></i>
-                            </div>
+                        <form action="/item/delete" method="POST">
+                            @csrf
+                            <input type="hidden" name="item_id" value="{{ $item->id }}">
+
+                            <button type="submit">
+                                <div class="bg-red-500 w-8 h-8 flex items-center justify-center rounded-md mx-auto mt-1">
+                                    <i data-feather="trash-2" class="stroke-white"></i>
+                                </div>
+                            </button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
         </table>
     @else
-        <div class="mt-12">No items yet</div>
+        <div class="mt-12 text-xl font-semibold">No items yet</div>
     @endif
 @endsection

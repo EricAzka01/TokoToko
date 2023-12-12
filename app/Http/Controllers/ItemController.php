@@ -68,4 +68,10 @@ class ItemController extends Controller
 
         return redirect('/dashboard/inventory')->with('addItemSuccess', 'Successfully added new item');
     }
+
+    public function delete(Request $request) {
+        Item::find($request)->first()->delete();
+
+        return redirect('/dashboard/inventory')->with('itemDeleteSuccess', 'Item successfully deleted');
+    }
 }

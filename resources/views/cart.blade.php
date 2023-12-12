@@ -14,36 +14,34 @@
             </div>
 
             <div class="flex justify-center mt-5">
-                <a href="/" class="button bg-green-500 rounded-xl px-3 py-2 text-white">Let's Shop!</a>
+                <a href="/" class="bg-green-500 rounded-xl px-6 py-2 text-white">Let's Shop</a>
             </div>
         </div>
     @else
-            @foreach ($cartItems as $item)
-                    <div class="bg-white py-6 px-2 rounded-xl shadow-lg flex mb-8">
-                        <img src="{{ $item->i_image }}" alt="{{ $item->i_name }}" class="w-32 h-32 justify-start">
-                        <div class="ml-8">
-                            <span class="">{{ $item->i_name }}</span><br>
-                            <span class="text-xl font-medium">Rp @convert($item->i_price)</span><br>
-                            <span class="text-sm text-gray-500 mt-6">{{ $item->seller->s_name }}</span>
-                        </div>
+        @foreach ($cartItems as $item)
+            <div class="border bg-white py-6 px-2 rounded-lg shadow-lg flex mb-8">
+                <img src="{{ $item->i_image }}" alt="{{ $item->i_name }}" class="w-32 h-32 justify-start">
+                <div class="ml-8">
+                    <span class="">{{ $item->i_name }}</span><br>
+                    <span class="text-xl font-semibold">Rp @convert($item->i_price)</span><br>
+                    <span class="text-sm text-gray-500 mt-6">{{ $item->seller->s_name }}</span>
+                </div>
 
-                        <div class="flex content-end">
-                            <form action="/cart/checkout" method="POST">
-                                @csrf
-                                <input type="hidden" name="item_id" value="{{ $item->id }}">
+                <div class="mr-auto space-x-4 flex">
+                    <form action="/cart/checkout" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_id" value="{{ $item->id }}">
+                        <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded-lg">Checkout</button>
+                    </form>
 
-                                <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded-lg">Checkout</button>
-                            </form>
-
-                            <form action="/cart/delete" method="POST">
-                                @csrf
-                                <input type="hidden" name="item_id" value="{{ $item->id }}">
-
-                                <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded-lg">Delete</button>
-                            </form>
-                        </div>
-                    </div>
-            @endforeach
+                    <form action="/cart/delete" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_id" value="{{ $item->id }}">
+                        <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded-lg">Delete</button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
     @endif
 
     <div class="mt-24">
@@ -51,7 +49,7 @@
 
         <div class="grid grid-cols-6 gap-6 justify-items-center">
             @foreach ($itemsAll as $item)
-                <div class="w-auto mt-4 bg-white shadow-lg rounded-lg">
+                <div class="border w-auto mt-4 bg-white shadow-lg rounded-lg">
                     <a href="/item/{{ $item->i_slug }}">
                         <img src="{{ $item->i_image }}" alt="item" class="object-cover rounded-t-lg">
                         <div class="mt-2 ml-3 mb-4">

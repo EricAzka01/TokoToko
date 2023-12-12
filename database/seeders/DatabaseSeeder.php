@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
             // Electronics Shop
             //
             [
-                'i_name' => 'Apple iPhone 15 128GB Blue',
+                'i_name' => 'Apple iPhone 15 128GB Pink',
                 'i_price' => 19399000,
                 'i_description' => "1. Brand new - Original - Segel
                 2. Garansi Apple 1 Tahun, Garansi Toko 7 Hari
@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
                 ",
                 'i_stock' => 200,
                 'i_slug' => 'apple-iphone-15-128gb-blue-cc09e781ea',
-                'i_image' => 'https://images.tokopedia.net/img/cache/900/VqbcmM/2023/10/16/fe41d8fd-42b0-4ffb-8242-f878f9592e70.png',
+                'i_image' => 'https://images.tokopedia.net/img/cache/900/VqbcmM/2023/11/29/a4aba0aa-b690-4fca-8964-eaa4247a1f77.png',
                 'seller_id' => 2,
             ], [
                 'i_name' => 'Apple iPhone 15 256GB Blue',

@@ -45,11 +45,12 @@ Route::middleware(['seller'])->group(function() {
     // Seller only
     Route::get('/dashboard', [DashboardController::class, 'view_home'])->name('seller.home');
     Route::get('/dashboard/order', [DashboardController::class, 'view_order']);
-    Route::get('/dashboard/chat', [DashboardController::class, 'view_chat']);
 
     Route::get('/dashboard/inventory', [DashboardController::class, 'view_inventory']);
     Route::get('/dashboard/inventory/add', [InventoryController::class, 'index']);
-    Route::post('/item/add', [ItemController::class, 'store']);
     
     Route::post('/logout/seller', [LoginController::class, 'logout_seller']);
+    
+    Route::post('/item/add', [ItemController::class, 'store']);
+    Route::post('/item/delete', [ItemController::class, 'delete']);
 });

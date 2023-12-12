@@ -9,18 +9,13 @@
         <img class="object-scale-down h-48 w-48" src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png">
         <div>
             <div class="border-y-5">
-                <h1>Name: </h1>
-                <h2>Phone Number: </h2>
-                <h2>Address: </h2>
-                <h2>Email: </h2>
+                <h1>{{ $seller->s_name }}</h1>
+                <h2>{{ $seller->s_phoneno }}</h2>
+                <h2>{{ $seller->s_address }}</h2>
+                <h2>{{ $seller->s_email }}</h2>
             </div>
         </div>
     </div>
-</div>
-
-<div class="border shadow-xl rounded-xl mt-20">
-    <p class="text-2xl font-medium ml-5 mt-3">Recent Order</p>
-    <p class="text-lg ml-5 mt-5 mb-5">No Order Yet!</p>
 </div>
 
 @endsection

@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="border shadow-xl rounded-xl mx-20">
-        <h1 class="text-5xl py-3 text-center text-green-500 mt-10 text-2xl font-bold">Profile</h1>
+        <h1 class="text-4xl py-3 text-center text-green-500 mt-10 font-bold">Profile</h1>
         <div class="shadow-xl p-10 rounded-xl flex justify-center items-center gap-20">
             <img class="object-scale-down h-48 w-48" src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png">
             <div>
