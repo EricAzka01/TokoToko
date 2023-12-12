@@ -114,6 +114,16 @@ class ItemController extends Controller
         return redirect('/dashboard/inventory')->with('itemUpdateSuccess', 'Item successfully updated');
     }
 
+    public function item_add() {
+        $userId = Auth::guard('seller')->user()->id;
+        $title = 'Add Item';
+
+        return view('dashboard.item_add', [
+            'title' => $title,
+            'userId' => $userId,
+        ]);
+    }
+
     public function item_view(Item $item) {
         $title = 'View ' . $item->i_name;
 

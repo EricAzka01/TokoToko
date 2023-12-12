@@ -11,7 +11,7 @@ use App\Models\Item;
 class PaymentController extends Controller
 {
     public function index(Request $request){
-        $item = Item::where('id', $request->item_id)->first();
+        $item = Item::findOrFail($request->item_id);
         $user = Auth::user();
 
         return view('payment', [ 

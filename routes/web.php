@@ -30,13 +30,13 @@ Route::middleware(['guest'])->group(function() {
 
 Route::middleware(['buyer'])->group(function() {
     // Buyer only
-    Route::post('/logout/buyer', [LoginController::class, 'logout_buyer']);
     Route::get('/profile', [ProfileBuyerController::class, 'index']);
     Route::get('/cart', [CartController::class, 'index']);
-    Route::post('/payment', [PaymentController::class, 'index']);
 
+    Route::post('/payment', [PaymentController::class, 'index']);
     Route::post('/cart/add', [CartController::class, 'store']);
     Route::post('/cart/delete', [CartController::class, 'delete']);
+    Route::post('/logout/buyer', [LoginController::class, 'logout_buyer']);
 });
 
 
@@ -46,7 +46,7 @@ Route::middleware(['seller'])->group(function() {
     Route::get('/dashboard/order', [DashboardController::class, 'view_order']);
 
     Route::get('/dashboard/inventory', [DashboardController::class, 'view_inventory']);
-    Route::get('/dashboard/inventory/add', [InventoryController::class, 'index']);
+    Route::get('/dashboard/item/add', [ItemController::class, 'item_add']);
     Route::get('/dashboard/item/{item:i_slug}', [ItemController::class, 'item_view']);
 
     Route::post('/logout/seller', [LoginController::class, 'logout_seller']);

@@ -4,7 +4,7 @@
     <a href="/dashboard/inventory" class="px-4 py-2 bg-green-500 text-white rounded-lg">Back to inventory</a>
     <div class="mt-6"></div>
 
-    <div class="font-bold text-3xl">Add New Item to Inventory</div>
+    <div class="font-bold text-3xl">Add new item to inventory</div>
 
     <div class="mt-12"></div>
 

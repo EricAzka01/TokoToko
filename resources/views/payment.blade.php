@@ -4,13 +4,12 @@
     <div class="border shadow-xl rounded-xl mx-20">
         <h1 class="text-4xl py-3 text-center text-green-500 mt-10 font-bold">Payment</h1>
         <div class="shadow-xl p-10 rounded-xl flex justify-center items-center gap-20">
-            <img class="object-scale-down h-72 w-72"
-                src="{{ $item->i_image }}">
+            <img class="object-scale-down h-72 w-72" src="{{ $item->i_image }}">
             <div>
                 <div class="border-y-5">
                     <h1 class="text-xl">{{ $item->i_name }}</h1>
                     <h2 class="font-semibold text-3xl">Rp @convert($item->i_price)</h2>
-                    <h2 class="text-gray-500 text-lg">1x</h2>
+                    <h2 class="text-gray-500 font-medium text-lg">1x</h2>
                 </div>
 
                 <div class="mt-20">
@@ -42,7 +41,7 @@
                             <div class="mt-4">
                                 <img src="https://cdn.discordapp.com/attachments/1150649876166737921/1183389733531951175/qr.png?ex=65882892&is=6575b392&hm=c48b91ed0da8a68ac3c98c4b93a8a06ba462ebf469ddd6a5f798b197e6e93536&"
                                     class="w-52 h-52" alt="SCAM">
-                                <h1 class="font">A/n Eric Azka Nugroho</h1>
+                                <h1 class="font">a.n. Eric Azka Nugroho</h1>
                                 <button class="border mr-5 px-3 py-3 mt-5 bg-green-300 text-white">Confirm</button>
                             </div>
                         </div>
@@ -65,5 +64,8 @@
 
                 </div>
             </div>
+            <form action="/transaction/add" method="POST" enctype="multipart/form-data">
+                <input type="image" src="" alt="">
+            </form>
         </div>
     @endsection
