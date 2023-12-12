@@ -34,7 +34,7 @@
                         <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded-lg">Checkout</button>
                     </form>
 
-                    <form action="/cart/delete" method="POST">
+                    <form action="/cart/delete" method="POST" onsubmit="return confirmDelete()">
                         @csrf
                         <input type="hidden" name="item_id" value="{{ $item->id }}">
                         <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded-lg">Delete</button>
@@ -62,4 +62,10 @@
             @endforeach
         </div>
     </div>
+
+    <script>
+        function confirmDelete() {
+            return window.confirm("Are you sure you want to delete this item from your cart?");
+        }
+    </script>
 @endsection

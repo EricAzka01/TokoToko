@@ -52,5 +52,7 @@ Route::middleware(['seller'])->group(function() {
     Route::post('/logout/seller', [LoginController::class, 'logout_seller']);
 
     Route::post('/item/add', [ItemController::class, 'store']);
+    Route::post('/item/edit', [ItemController::class, 'edit']);
+    Route::post('/item/save_edit', [ItemController::class, 'save_edit']);
     Route::post('/item/delete', [ItemController::class, 'delete']);
 });

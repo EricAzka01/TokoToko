@@ -1,4 +1,5 @@
-<nav class="bg-white border mx-8 my-6 h-16 top-6 p-4 rounded-lg shadow-lg {{ $title == 'Payment' ? "" : 'sticky' }} z-50">
+<nav
+    class="bg-white border mx-8 my-6 h-16 top-6 p-4 rounded-lg shadow-lg {{ $title == 'Payment' ? '' : 'sticky' }} z-50">
     <div class="flex justify-between select-none">
         <div class="ml-2 flex">
             <a href="/" class="font-bold text-2xl text-green-500">TokoToko</a>
@@ -6,8 +7,10 @@
 
         @auth('buyer')
             <div class="ml-auto flex items-center space-x-5 mr-4">
-                <a href="/cart" class="flex"><i data-feather="shopping-cart"></i></a>
-                <a href="/profile"  class="flex"><i data-feather="user"></i></a>
+                <a href="/cart" class="flex justify-center">
+                    <i data-feather="shopping-cart"></i>
+                </a>
+                <a href="/profile" class="flex"><i data-feather="user"></i></a>
 
                 <form method="POST" action="/logout/buyer" class="flex" onsubmit="return confirmLogout()">
                     @csrf

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ItemController extends Controller
 {
@@ -70,13 +71,51 @@ class ItemController extends Controller
     }
 
     public function delete(Request $request) {
-        Item::find($request->item_id)->delete();
+        Item::findOrFail($request->item_id)->delete();
 
         return redirect('/dashboard/inventory')->with('itemDeleteSuccess', 'Item successfully deleted');
     }
 
+    public function edit(Request $request) {
+        $item = Item::findOrFail($request->item_id);
+        $title = 'Edit ' . $item->i_name;
+
+        return view('dashboard.item_edit', [
+            'title' => $title,
+            'item' => $item,
+        ]);
+    }
+
+    public function save_edit(Request $request) {
+        $item = Item::findOrFail($request->item_id);
+        $title = 'Edit ' . $item->i_name;
+        $validator = Validator::make($request->all(), [
+            'i_name' => 'required|min:5|max:100',
+            'i_price' => 'required|integer',
+            'i_description' => 'required|max:250',
+            'i_stock' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            // dd($validator->failed());
+            return view('dashboard.item_edit', [
+                'item' => $item,
+                'title' => $title,
+            ]);
+        }
+
+        $validated = $validator->valid();
+        $item['i_name'] = $validated['i_name'];
+        $item['i_price'] = $validated['i_price'];
+        $item['i_description'] = $validated['i_description'];
+        $item['i_stock'] = $validated['i_stock'];
+        $item->save();
+
+        return redirect('/dashboard/inventory')->with('itemUpdateSuccess', 'Item successfully updated');
+    }
+
     public function item_view(Item $item) {
-        $title = 'Item';
+        $title = 'View ' . $item->i_name;
 
         return view('dashboard.item_view', [
             'title' => $title,

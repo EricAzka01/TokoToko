@@ -17,6 +17,12 @@
         </div>
     @endif
 
+    @if (session()->has('itemUpdateSuccess'))
+        <div class="text-green-500 font-medium text-lg mb-4">
+            {{ session('itemUpdateSuccess') }}
+        </div>
+    @endif
+
     <a href="/dashboard/inventory/add" class="bg-green-500 px-4 py-2 text-white font-medium rounded-lg">Add Item</a>
 
     <div class="mt-10"></div>
@@ -46,9 +52,16 @@
                             </div>
                         </a>
 
-                        <div class="bg-yellow-500 w-8 h-8 flex items-center justify-center rounded-md mx-auto mt-1">
-                            <i data-feather="edit" class="stroke-white"></i>
-                        </div>
+                        <form action="/item/edit" method="POST">
+                            @csrf
+                            <input type="hidden" name="item_id" value="{{ $item->id }}">
+
+                            <button type="submit">
+                                <div class="bg-yellow-500 w-8 h-8 flex items-center justify-center rounded-md mx-auto mt-1">
+                                    <i data-feather="edit" class="stroke-white"></i>
+                                </div>
+                            </button>
+                        </form>
 
                         <form action="/item/delete" method="POST" onsubmit="return confirmDelete()">
                             @csrf
