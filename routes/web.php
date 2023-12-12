@@ -33,10 +33,9 @@ Route::middleware(['buyer'])->group(function() {
     Route::post('/logout/buyer', [LoginController::class, 'logout_buyer']);
     Route::get('/profile', [ProfileBuyerController::class, 'index']);
     Route::get('/cart', [CartController::class, 'index']);
-    Route::get('/payment', [PaymentController::class, 'index']);
+    Route::post('/payment', [PaymentController::class, 'index']);
 
     Route::post('/cart/add', [CartController::class, 'store']);
-    Route::post('/cart/checkout', [CartController::class, 'checkout']);
     Route::post('/cart/delete', [CartController::class, 'delete']);
 });
 
@@ -48,9 +47,10 @@ Route::middleware(['seller'])->group(function() {
 
     Route::get('/dashboard/inventory', [DashboardController::class, 'view_inventory']);
     Route::get('/dashboard/inventory/add', [InventoryController::class, 'index']);
-    
+    Route::get('/dashboard/item/{item:i_slug}', [ItemController::class, 'item_view']);
+
     Route::post('/logout/seller', [LoginController::class, 'logout_seller']);
-    
+
     Route::post('/item/add', [ItemController::class, 'store']);
     Route::post('/item/delete', [ItemController::class, 'delete']);
 });

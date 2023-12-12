@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Format IDR currency
         Blade::directive('convert', function ($money) {
-            return "<?php echo number_format($money); ?>";
+            return "<?php echo number_format($money, 2, ',', '.'); ?>";
         });
     }
 }

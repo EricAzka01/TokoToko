@@ -12,11 +12,8 @@
                 <p>Item Name</p>
                 <p>Buyer Name: </p>
                 <p>Quantity:</p>
-                <button class="border bg-green-500 rounded-xl p-3 text-white">Confirm</button>
+                <button class="border bg-green-500 rounded-xl px-4 py-2 text-white">Confirm</button>
             </div>
         </div>
-
-
-
     </div>
 @endsection

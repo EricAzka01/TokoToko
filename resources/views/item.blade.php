@@ -14,7 +14,7 @@
 
             <a href="#" class="text-gray-500">by {{ $item->seller->s_name }}</a>
 
-            <h2 class="text-3xl font-semibold text-2xl mt-5">Rp. @convert($item->i_price)</h2>
+            <h2 class="text-3xl font-semibold text-2xl mt-5">Rp @convert($item->i_price)</h2>
             <h2 class="mt-12">{{ $item->i_description }}</h2>
         </div>
 

@@ -74,4 +74,13 @@ class ItemController extends Controller
 
         return redirect('/dashboard/inventory')->with('itemDeleteSuccess', 'Item successfully deleted');
     }
+
+    public function item_view(Item $item) {
+        $title = 'Item';
+
+        return view('dashboard.item_view', [
+            'title' => $title,
+            'item' => $item,
+        ]);
+    }
 }

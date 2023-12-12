@@ -33,16 +33,18 @@
             @foreach ($items as $item)
                 <tr>
                     <td class="border">{{ $item->i_name }}</td>
-                    <td class="border">{{ $item->i_price }}</td>
+                    <td class="border">Rp @convert($item->i_price)</td>
                     <td class="border">{{ $item->i_stock }}</td>
                     <td class="border">
                         <img class="object-scale-down h-32 w-32 mx-auto" src="{{ $item->i_image }}">
                     </td>
 
                     <td class="border">
-                        <div class="bg-green-500 w-8 h-8 flex items-center justify-center rounded-md mx-auto">
-                            <i data-feather="eye" class="stroke-white"></i>
-                        </div>
+                        <a href="/dashboard/item/{{ $item->i_slug }}">
+                            <div class="bg-green-500 w-8 h-8 flex items-center justify-center rounded-md mx-auto">
+                                <i data-feather="eye" class="stroke-white"></i>
+                            </div>
+                        </a>
 
                         <div class="bg-yellow-500 w-8 h-8 flex items-center justify-center rounded-md mx-auto mt-1">
                             <i data-feather="edit" class="stroke-white"></i>
