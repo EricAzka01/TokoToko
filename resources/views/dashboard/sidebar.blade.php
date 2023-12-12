@@ -23,7 +23,7 @@
             </a>
         @endforeach
 
-        <form action="/logout/seller" method="POST" class="flex items-center">
+        <form action="/logout/seller" method="POST" class="flex items-center" onsubmit="return confirmLogout()">
             @csrf
             <i data-feather="log-out" class="ml-4 stroke-white w-8 h-8"></i>
             <button class="bg-green-500 w-full ml-4 my-4 text-white font-medium text-lg text-left">
@@ -31,4 +31,10 @@
             </button>
         </form>
     </div>
+
+    <script>
+        function confirmLogout() {
+            return window.confirm("Are you sure you want to log out?");
+        }
+    </script>
 @endisset

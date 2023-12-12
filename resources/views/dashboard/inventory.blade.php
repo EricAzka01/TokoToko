@@ -48,7 +48,7 @@
                             <i data-feather="edit" class="stroke-white"></i>
                         </div>
 
-                        <form action="/item/delete" method="POST">
+                        <form action="/item/delete" method="POST" onsubmit="return confirmDelete()">
                             @csrf
                             <input type="hidden" name="item_id" value="{{ $item->id }}">
 
@@ -65,4 +65,10 @@
     @else
         <div class="mt-12 text-xl font-semibold">No items yet</div>
     @endif
+
+    <script>
+        function confirmDelete() {
+            return window.confirm("Are you sure you want to delete this item?");
+        }
+    </script>
 @endsection

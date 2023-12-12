@@ -9,7 +9,7 @@
                 <a href="/cart" class="flex"><i data-feather="shopping-cart"></i></a>
                 <a href="/profile"  class="flex"><i data-feather="user"></i></a>
 
-                <form method="POST" action="/logout/buyer" class="flex">
+                <form method="POST" action="/logout/buyer" class="flex" onsubmit="return confirmLogout()">
                     @csrf
                     <button type="submit"> <i data-feather="log-out"></i></button>
                 </form>
@@ -29,4 +29,10 @@
             </div>
         @endguest
     </div>
+
+    <script>
+        function confirmLogout() {
+            return window.confirm("Are you sure you want to log out?");
+        }
+    </script>
 </nav>

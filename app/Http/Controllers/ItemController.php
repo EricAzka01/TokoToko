@@ -70,7 +70,7 @@ class ItemController extends Controller
     }
 
     public function delete(Request $request) {
-        Item::find($request)->first()->delete();
+        Item::find($request->item_id)->delete();
 
         return redirect('/dashboard/inventory')->with('itemDeleteSuccess', 'Item successfully deleted');
     }
