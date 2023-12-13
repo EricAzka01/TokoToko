@@ -10,12 +10,13 @@ class Transaction extends Model
     use HasFactory;
 
     protected $fillable = [
-
+        't_quantity',
+        't_totalprice',
+        't_status',
+        't_paymentmethod',
+        't_paymentproof',
+        't_trackingcode',
         'buyer_id',
         'item_id',
-        'seller_id',
-        't_time',
-        't_status',
-
     ];
 }

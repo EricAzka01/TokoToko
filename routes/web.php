@@ -16,6 +16,7 @@ Route::middleware('redirectIfSeller')->group(function() {
     Route::get('/item/{item:i_slug}', [ItemController::class, 'index']);
     Route::get('/', [HomeController::class, 'index'])->name('buyer.home');
 });
+
 Route::middleware(['guest'])->group(function() {
     // Routes for guest
     Route::get('/login', [LoginController::class, 'index']);
@@ -37,6 +38,7 @@ Route::middleware(['buyer'])->group(function() {
     Route::post('/cart/add', [CartController::class, 'store']);
     Route::post('/cart/delete', [CartController::class, 'delete']);
     Route::post('/logout/buyer', [LoginController::class, 'logout_buyer']);
+    Route::post('/transaction/add', [PaymentController::class, 'add_transaction']);
 });
 
 

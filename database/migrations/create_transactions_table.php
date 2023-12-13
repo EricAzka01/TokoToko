@@ -15,13 +15,12 @@ return new class extends Migration
             $table->id();
             $table->integer('t_quantity');
             $table->integer('t_totalprice');
-            $table->integer('t_status');
+            $table->string('t_status');
             $table->string('t_paymentmethod');
             $table->string('t_paymentproof');
-            $table->string('t_trackingcode');
+            $table->string('t_trackingcode')->nullable();
             $table->foreignId('buyer_id');
             $table->foreignId('item_id');
-            $table->foreignId('seller_id');
             $table->timestamps();
         });
     }
