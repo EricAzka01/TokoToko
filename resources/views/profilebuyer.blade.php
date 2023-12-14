@@ -30,11 +30,18 @@
                 <td class="border"><img class="w-32 h-32" src="{{ $order->item->i_image }}"
                         alt="{{ $order->item->i_slug }}"></td>
                 <td class="border">{{ $order->item->i_name }}</td>
-                <td class="border">{{ $order->t_trackingcode }}</td>
+                <td class="border">
+                    @if ($order->t_status == 'WAITING')
+                        <span>-</span>
+                    @else
+                        <span>{{ $order->t_trackingcode }}</span>
+                    @endif
+                </td>
+
                 <td class="border"><span class="font-bold text-green-500">{{ $order->t_status }}</span></td>
 
                 <td class="border">
-                    @if ($order->t_status == 'RECEIVED')
+                    @if ($order->t_status == 'RECEIVED' or $order->t_status == 'WAITING')
                         <span>-</span>
                     @else
                         <form action="/order/received" method="POST">
