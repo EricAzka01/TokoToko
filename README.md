@@ -5,8 +5,8 @@ Members:
 - Eric Azka Nugroho 5025211064
 - Muhammad Ghifari Taqiuddin 5025211063
 
-## Demonstration Video
-https://youtu.be/pRi3MnGqoe4
+## Demonstration Video (Youtube)
+[![demo-vide](https://img.youtube.com/vi/pRi3MnGqoe4/hqdefault.jpg)](https://www.youtube.com/watch?v=pRi3MnGqoe4)
 
 ## Object Relations
 ### CDM
