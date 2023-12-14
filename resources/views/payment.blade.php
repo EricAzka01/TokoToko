@@ -68,6 +68,7 @@
                         <input type="hidden" name="t_paymentmethod" value="GoPay">
                         <input type="hidden" name="t_totalprice" value="{{ $item->i_price }}">
                         <input type="hidden" name="buyer_id" value="{{ $buyer->id }}">
+                        <input type="hidden" name="seller_id" value="{{ $item->seller_id }}">
                         <input type="hidden" name="item_id" value="{{ $item->id }}">
                         <label class="font-semibold" for="t_paymentproof">Upload your payment proof</label><br>
                         <input type="file" name="t_paymentproof" id="t_paymentproof"><br>

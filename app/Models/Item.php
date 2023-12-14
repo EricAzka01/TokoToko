@@ -29,4 +29,9 @@ class Item extends Model
     {
         return $this->hasMany(Cart::class, 'item_id');
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'item_id');
+    }
 }

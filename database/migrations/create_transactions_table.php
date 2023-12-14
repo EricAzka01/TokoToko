@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('t_paymentproof');
             $table->string('t_trackingcode')->nullable();
             $table->foreignId('buyer_id');
+            $table->foreignId('seller_id');
             $table->foreignId('item_id');
             $table->timestamps();
         });

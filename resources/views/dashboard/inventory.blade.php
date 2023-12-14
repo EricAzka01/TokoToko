@@ -28,7 +28,7 @@
     <div class="mt-10"></div>
 
     @if (count($items) > 0)
-        <table class="w-full text-sm text-center border">
+        <table class="w-full text-center border">
             <tr class="border">
                 <th class="border">Name</th>
                 <th class="border">Price</th>

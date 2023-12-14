@@ -28,12 +28,20 @@ class PaymentController extends Controller
             't_quantity' => 'required',
             't_paymentmethod' => 'required',
             't_totalprice' => 'required',
-            't_paymentproof' => 'required',
+            't_paymentproof' => 'required|file|image',
             'buyer_id' => 'required',
             'item_id' => 'required',
+            'seller_id' => 'required',
         ]);
 
         $validated['t_status'] = 'WAITING';
+
+        if ($request->file('t_paymentproof')) {
+            $file = $request->file('t_paymentproof');
+            $filename = uniqid() . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/paymentproof/' . $filename);
+            $validated['t_paymentproof'] = '/storage/paymentproof/' . $filename;
+        }
 
         // Add to transaction table
         Transaction::create($validated);
@@ -50,5 +58,14 @@ class PaymentController extends Controller
         $item->save();
 
         return redirect('/cart')->with('paymentSuccessful', 'Payment success, please wait for seller confirmation');
+    }
+
+    public function confirm_transaction(Request $request) {
+        $t = Transaction::findOrFail($request->t_id);
+        $t['t_trackingcode'] = $request->t_trackingcode;
+        $t['t_status'] = 'ON DELIVERY';
+        $t->save();
+
+        return redirect('/dashboard/order')->with('orderConfirmed', 'Order #' . $request->t_id . ' confirmed!');
     }
 }
