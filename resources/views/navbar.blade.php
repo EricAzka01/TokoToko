@@ -7,7 +7,7 @@
 
         @auth('buyer')
             <div class="ml-auto flex items-center space-x-5 mr-4">
-                <button id="openModal">
+                {{-- <button id="openModal">
                     <i data-feather="info"></i>
                 </button>
 
@@ -54,7 +54,7 @@
                     closeModalBtn.addEventListener('click', () => {
                         modal.classList.add('hidden');
                     });
-                </script>
+                </script> --}}
                 <a href="/cart" class="flex justify-center">
                     <i data-feather="shopping-cart"></i>
                 </a>
