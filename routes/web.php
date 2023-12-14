@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('redirectIfSeller')->group(function() {
@@ -16,6 +17,7 @@ Route::middleware('redirectIfSeller')->group(function() {
     Route::get('/item/{item:i_slug}', [ItemController::class, 'index']);
     Route::get('/', [HomeController::class, 'index'])->name('buyer.home');
 });
+
 Route::middleware(['guest'])->group(function() {
     // Routes for guest
     Route::get('/login', [LoginController::class, 'index']);
@@ -30,13 +32,15 @@ Route::middleware(['guest'])->group(function() {
 
 Route::middleware(['buyer'])->group(function() {
     // Buyer only
-    Route::post('/logout/buyer', [LoginController::class, 'logout_buyer']);
     Route::get('/profile', [ProfileBuyerController::class, 'index']);
     Route::get('/cart', [CartController::class, 'index']);
-    Route::post('/payment', [PaymentController::class, 'index']);
 
+    Route::post('/payment', [PaymentController::class, 'index']);
     Route::post('/cart/add', [CartController::class, 'store']);
     Route::post('/cart/delete', [CartController::class, 'delete']);
+    Route::post('/logout/buyer', [LoginController::class, 'logout_buyer']);
+    Route::post('/transaction/add', [PaymentController::class, 'add_transaction']);
+    Route::post('/order/received', [PaymentController::class, 'order_received']);
 });
 
 
@@ -46,7 +50,7 @@ Route::middleware(['seller'])->group(function() {
     Route::get('/dashboard/order', [DashboardController::class, 'view_order']);
 
     Route::get('/dashboard/inventory', [DashboardController::class, 'view_inventory']);
-    Route::get('/dashboard/inventory/add', [InventoryController::class, 'index']);
+    Route::get('/dashboard/item/add', [ItemController::class, 'item_add']);
     Route::get('/dashboard/item/{item:i_slug}', [ItemController::class, 'item_view']);
 
     Route::post('/logout/seller', [LoginController::class, 'logout_seller']);
@@ -55,4 +59,6 @@ Route::middleware(['seller'])->group(function() {
     Route::post('/item/edit', [ItemController::class, 'edit']);
     Route::post('/item/save_edit', [ItemController::class, 'save_edit']);
     Route::post('/item/delete', [ItemController::class, 'delete']);
+
+    Route::post('/transaction/confirm', [PaymentController::class, 'transaction_confirm']);
 });

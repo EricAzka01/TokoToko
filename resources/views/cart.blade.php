@@ -1,6 +1,12 @@
 @extends('layout')
 
 @section('container')
+    @if (session()->has('paymentSuccessful'))
+        <div class="text-green-500 flex justify-center font-medium text-lg mb-4">
+            {{ session('paymentSuccessful') }}
+        </div>
+    @endif
+
     @if (count($cartItems) == 0)
         <div class="place-items-center">
             <div class="justify-center flex mt-24">

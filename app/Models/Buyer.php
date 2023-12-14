@@ -29,4 +29,9 @@ class Buyer extends Authenticatable
     {
         return $this->hasMany(Cart::class, 'buyer_id');
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'buyer_id');
+    }
 }

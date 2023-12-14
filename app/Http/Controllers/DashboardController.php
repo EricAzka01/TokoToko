@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Item;
 
+use App\Models\Transaction;
 use Auth;
 
 class DashboardController extends Controller
@@ -49,8 +50,8 @@ class DashboardController extends Controller
 
     public function view_inventory() {
         $title = 'Inventory';
-        $userId = Auth::guard('seller')->user()->id;
-        $items = Item::where('seller_id', $userId)->get();
+        $sellerId = Auth::guard('seller')->user()->id;
+        $items = Item::where('seller_id', $sellerId)->get();
 
         return view('dashboard.inventory', [
             'sidebarMenu' => $this->sidebarMenu,
@@ -61,10 +62,13 @@ class DashboardController extends Controller
 
     public function view_order() {
         $title = 'Order';
+        $sellerId = Auth::guard('seller')->user()->id;
+        $orders = Transaction::where('seller_id', $sellerId)->with('item')->with('buyer')->get();
 
         return view('dashboard.order', [
             'sidebarMenu' => $this->sidebarMenu,
             'title' => $title,
+            'orders' => $orders,
         ]);
     }
 }

@@ -23,12 +23,12 @@
         </div>
     @endif
 
-    <a href="/dashboard/inventory/add" class="bg-green-500 px-4 py-2 text-white font-medium rounded-lg">Add Item</a>
+    <a href="/dashboard/item/add" class="bg-green-500 px-4 py-2 text-white font-medium rounded-lg">Add Item</a>
 
     <div class="mt-10"></div>
 
     @if (count($items) > 0)
-        <table class="w-full text-sm text-center border">
+        <table class="w-full text-center border">
             <tr class="border">
                 <th class="border">Name</th>
                 <th class="border">Price</th>
