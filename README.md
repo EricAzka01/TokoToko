@@ -6,6 +6,7 @@ Members:
 - Muhammad Ghifari Taqiuddin 5025211063
 
 ## Demonstration Video
+https://youtu.be/pRi3MnGqoe4
 
 ## Object Relations
 ### CDM
