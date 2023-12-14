@@ -40,6 +40,7 @@ Route::middleware(['buyer'])->group(function() {
     Route::post('/cart/delete', [CartController::class, 'delete']);
     Route::post('/logout/buyer', [LoginController::class, 'logout_buyer']);
     Route::post('/transaction/add', [PaymentController::class, 'add_transaction']);
+    Route::post('/order/received', [PaymentController::class, 'order_received']);
 });
 
 
@@ -59,5 +60,5 @@ Route::middleware(['seller'])->group(function() {
     Route::post('/item/save_edit', [ItemController::class, 'save_edit']);
     Route::post('/item/delete', [ItemController::class, 'delete']);
 
-    Route::post('/transaction/confirm', [PaymentController::class, 'confirm_transaction']);
+    Route::post('/transaction/confirm', [PaymentController::class, 'transaction_confirm']);
 });

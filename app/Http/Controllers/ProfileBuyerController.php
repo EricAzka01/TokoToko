@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use Auth;
 
 use Illuminate\Http\Request;
@@ -9,11 +10,13 @@ use Illuminate\Http\Request;
 class ProfileBuyerController extends Controller
 {
     public function index(){
-        $user = Auth::user();
+        $buyer = Auth::user();
+        $orders = Transaction::where('buyer_id', $buyer->id)->with('item')->with('buyer')->get();
 
         return view('profilebuyer', [ 
-            "title" => $user->b_name . "'s Profile",
-            'user' => $user,
+            'title' => $buyer->b_name . "'s Profile",
+            'orders' => $orders,
+            'user' => $buyer,
         ]); 
     }
 }

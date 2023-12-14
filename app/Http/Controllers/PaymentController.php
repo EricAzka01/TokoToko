@@ -60,12 +60,20 @@ class PaymentController extends Controller
         return redirect('/cart')->with('paymentSuccessful', 'Payment success, please wait for seller confirmation');
     }
 
-    public function confirm_transaction(Request $request) {
+    public function transaction_confirm(Request $request) {
         $t = Transaction::findOrFail($request->t_id);
         $t['t_trackingcode'] = $request->t_trackingcode;
         $t['t_status'] = 'ON DELIVERY';
         $t->save();
 
         return redirect('/dashboard/order')->with('orderConfirmed', 'Order #' . $request->t_id . ' confirmed!');
+    }
+
+    public function order_received(Request $request) {
+        $t = Transaction::findOrFail($request->t_id);
+        $t['t_status'] = 'RECEIVED';
+        $t->save();
+
+        return redirect('/profile');
     }
 }
