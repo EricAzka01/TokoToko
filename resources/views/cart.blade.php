@@ -33,7 +33,7 @@
                     <span class="text-sm text-gray-500 mt-6">{{ $item->seller->s_name }}</span>
                 </div>
 
-                <div class="mr-auto space-x-4 flex">
+                <div class="mr-auto space-x-4 flex ml-10">
                     <form action="/payment" method="POST">
                         @csrf
                         <input type="hidden" name="item_id" value="{{ $item->id }}">
